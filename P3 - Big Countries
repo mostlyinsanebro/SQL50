@@ -1,0 +1,7 @@
+Problem Link:-
+https://leetcode.com/problems/big-countries/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+SELECT NAME,POPULATION,AREA from WORLD
+WHERE AREA >=3000000 OR POPULATION>=25000000;
