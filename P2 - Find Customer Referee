@@ -1,0 +1,13 @@
+Problem Link:-
+https://leetcode.com/problems/find-customer-referee/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution 1:-
+SELECT name from customer
+WHERE referee_id <> 2 or referee_id IS NULL;
+
+
+Solution 2:- Better
+SELECT name from customer where id not in (
+SELECT id from customer
+WHERE referee_id = 2);
