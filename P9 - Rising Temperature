@@ -1,0 +1,9 @@
+Problem Link:-
+https://leetcode.com/problems/rising-temperature/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+Select w2.id  from
+weather w1 join weather w2
+on w1.recordDate = w2.recordDate-1
+where w2.temperature>w1.temperature;
