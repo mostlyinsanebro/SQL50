@@ -1,0 +1,11 @@
+Problem Link:-
+https://leetcode.com/problems/students-and-examinations/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+Select a.student_id,a.student_name,a.subject_name,count(ex.subject_name) as attended_exams from examinations ex right join
+(Select * from students s cross join subjects sub) a
+on a.student_id = ex.student_id  
+and a.subject_name = ex.subject_name
+group by a.student_id,a.student_name,a.subject_name
+order by a.student_id,a.subject_name;
