@@ -1,0 +1,11 @@
+Problem Link:-
+https://leetcode.com/problems/percentage-of-users-attended-a-contest/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Soution:-
+Select r.contest_id,round((count(r.user_id)/(select count(user_id) from users))*100,2) as percentage
+from users u,
+register r
+where u.user_id = r.user_id
+group by r.contest_id
+order by percentage desc,contest_id;
