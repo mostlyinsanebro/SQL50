@@ -1,0 +1,11 @@
+Problem Link:-
+https://leetcode.com/problems/product-sales-analysis-iii/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+SELECT product_id,first_year,quantity,price from
+(Select product_id,year as first_year,quantity,price,
+rank() over (partition by product_id 
+            order by year) rn
+ from sales) s
+ where s.rn =1;
