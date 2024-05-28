@@ -1,0 +1,11 @@
+Problem Link:-
+https://leetcode.com/problems/biggest-single-number/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+Select max(num) as num from (
+Select num
+from mynumbers
+group by num
+having count(num) = 1
+);
