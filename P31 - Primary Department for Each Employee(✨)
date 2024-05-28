@@ -1,0 +1,21 @@
+Problem Link:-
+https://leetcode.com/problems/primary-department-for-each-employee/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution 1:-
+(SELECT employee_id,max(department_id) as department_id
+from employee
+group by employee_id
+having count(department_id) = 1
+union 
+SELECT employee_id,department_id
+from employee
+where primary_flag = 'Y')
+order by employee_id;
+
+Solution 2:- Optimal solution -> Using Window function
+Select employee_id,department_id
+from (
+Select e.*,count(*) over(partition by employee_id) as cnt
+from employee e) ans
+where cnt = 1 OR (cnt<>1 AND primary_flag = 'Y');
