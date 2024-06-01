@@ -16,7 +16,8 @@ group by machine_id;
 
 
 Alternate Solution:-
-SELECT machine_id,round(sum(case activity_type
+SELECT machine_id,
+round(sum(case activity_type
 when 'start' then -timestamp
 else timestamp
 end)/(count(machine_id)/2),3) as processing_time
