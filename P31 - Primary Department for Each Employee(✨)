@@ -2,6 +2,7 @@ Problem Link:-
 https://leetcode.com/problems/primary-department-for-each-employee/description/?envType=study-plan-v2&envId=top-sql-50
 
 
+
 Solution 1:-
 (SELECT employee_id,max(department_id) as department_id
 from employee
