@@ -1,0 +1,9 @@
+Problem Link:-
+https://leetcode.com/problems/triangle-judgement/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+SELECT x,y,z,
+case when (x+y>z and y+z>x and x+z>y) then 'Yes'
+else 'No' end as triangle
+from triangle;
