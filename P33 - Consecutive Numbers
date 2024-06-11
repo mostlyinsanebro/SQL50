@@ -1,0 +1,9 @@
+Problem Link:-
+https://leetcode.com/problems/consecutive-numbers/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+SELECT distinct num as ConsecutiveNums 
+from logs l
+where num = (select num from logs where id = l.id+1)
+and num = (select num from logs where id = l.id-1);
