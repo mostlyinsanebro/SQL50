@@ -7,3 +7,15 @@ SELECT distinct num as ConsecutiveNums
 from logs l
 where num = (select num from logs where id = l.id+1)
 and num = (select num from logs where id = l.id-1);
+
+
+Optimal Solution:- (Revise)
+select distinct num as ConsecutiveNums from (
+select num,id-rval as dat
+from(
+select id,
+num,
+row_number() over(partition by num order by id) rval
+from logs))
+group by num, dat
+having count(*)>=3;
