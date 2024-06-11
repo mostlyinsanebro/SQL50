@@ -1,0 +1,20 @@
+Problem Link:-
+https://leetcode.com/problems/product-price-at-a-given-date/description/?envType=study-plan-v2&envId=top-sql-50
+
+Approach:- First, we took all the rows where change_date < '2019-08-16' and found the max from it. This will find the next smaller date to '2019-08-16', which means the new_price
+at that date will be our price. For ids having min(change_date) > '2019-08-16', we will take 10 as the default price.
+
+Solution:-
+select product_id,new_price as price
+from products
+where (product_id,change_date) in 
+(select product_id,max(change_date)
+from products
+where change_date<='2019-08-16'
+group by product_id)
+union
+select product_id,10 as price
+from products
+group by product_id
+having min(change_date) > '2019-08-16'
+order by product_id;
