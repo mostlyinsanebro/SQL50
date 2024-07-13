@@ -5,3 +5,7 @@ https://leetcode.com/problems/find-users-with-valid-e-mails/description/?envType
 Solution:-
 select user_id,name,mail from users
 where regexp_like(mail,'^[a-zA-Z][a-zA-Z0-9_.-]*@leetcode[.]com$');
+
+Explanation -> Regexp_like will return all the rows where mail column have data starting with either lowecase or uppercase alphabets ^[a-zA-Z], it can have occurences of 
+lowercase or uppercase alphabetsa-zA-Z , digits0-9, underscore _ , dot (.) , dash [-] in the string and they can occur any number of times -> [a-zA-Z0-9_.-]* , the star(*) at the 
+end means these characters can occur any number of times in the mail string, after that @leetcode[.]com$ means mail needs to end with @leetcode.com...
