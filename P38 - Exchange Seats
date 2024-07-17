@@ -1,0 +1,13 @@
+Problem Link:-
+https://leetcode.com/problems/exchange-seats/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+Select 
+(CASE 
+when mod(id,2)=0 then id-1
+when mod(id,2)!=0 and id = (select count(*) from seat) then id
+else id+1
+END) as id
+,student from seat
+order by id;
