@@ -8,3 +8,11 @@ Select unique_id,name
 from employees e
 left join employeeUNI eu
 on e.id = eu.id;
+
+
+
+Alternate Solution:-
+SELECT unique_id,name
+from employees e1,
+employeeUNI e2
+where e1.id = e2.id(+);
