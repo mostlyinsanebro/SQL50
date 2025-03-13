@@ -7,3 +7,9 @@ select * from cinema
 where description <> 'boring'
 and mod(id,2)<>0
 order by rating desc;
+
+SELECT c.user_id,count(*) from signups s
+left join confirmations c
+on s.user_id = c.user_id
+where action = 'confirmed'
+group by c.user_id
