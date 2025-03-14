@@ -2,6 +2,7 @@ Problem Link:-
 https://leetcode.com/problems/immediate-food-delivery-ii/description/?envType=study-plan-v2&envId=top-sql-50
 
 
+Rank solution:- 
 Solution:-
 WITH delivery_first_order as (
 Select customer_id,
@@ -13,3 +14,18 @@ select round(sum(order_immediate)/count(distinct customer_id)*100,2) as  immedia
 from
 delivery_first_order 
 where rn=1;
+
+
+Alternate Brute Force Solution:-
+SELECT round((sum(per)/count(*))*100,2) as immediate_percentage  from
+(Select d.customer_id,
+sum(case when d.order_date = d.CUSTOMER_PREF_DELIVERY_DATE then 1
+else 0
+end)/count(*) as per
+from delivery d,
+(SELECT customer_id,min(order_date) as mind
+from delivery
+group by customer_id) a
+where d.customer_id = a.customer_id
+and d.order_date = a.mind
+group by d.customer_id)
