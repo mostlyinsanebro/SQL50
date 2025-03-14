@@ -2,7 +2,10 @@ Problem Link:-
 https://leetcode.com/problems/immediate-food-delivery-ii/description/?envType=study-plan-v2&envId=top-sql-50
 
 
-Rank solution:- 
+RANK FUNCTION LINK:- 
+https://www.oracletutorial.com/oracle-analytic-functions/oracle-rank/?callback=in&code=YZEZMJQZYWITNWQXOC0ZN2EXLWEWZTGTOGVIYJHLOTLLZDG0&state=f1c0b4ebaea34e4298ea7cc7bd0de1b4
+
+
 Solution:-
 WITH delivery_first_order as (
 Select customer_id,
