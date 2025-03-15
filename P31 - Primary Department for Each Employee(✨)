@@ -1,7 +1,7 @@
 Problem Link:-
 https://leetcode.com/problems/primary-department-for-each-employee/description/?envType=study-plan-v2&envId=top-sql-50
 
-
+Article Link:- https://www.geeksforgeeks.org/window-functions-in-sql/
 
 Solution 1:-
 (SELECT employee_id,max(department_id) as department_id
@@ -13,6 +13,9 @@ SELECT employee_id,department_id
 from employee
 where primary_flag = 'Y')
 order by employee_id;
+
+
+
 
 Solution 2:- Optimal solution -> Using Window function
 Select employee_id,department_id
