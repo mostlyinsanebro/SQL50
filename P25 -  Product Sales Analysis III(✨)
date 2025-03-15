@@ -9,3 +9,19 @@ rank() over (partition by product_id
             order by year) rn
  from sales) s
  where s.rn =1;
+
+
+
+With cte as
+(
+    Select s.*,
+    rank() over (
+        partition by product_id
+        order by year
+    ) as rn
+    from sales s
+)
+Select product_id,year as first_year,quantity,price
+from cte
+where rn=1
+
