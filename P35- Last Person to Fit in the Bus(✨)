@@ -1,0 +1,25 @@
+Problem Link:-
+https://leetcode.com/problems/last-person-to-fit-in-the-bus/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+SELECT person_name
+from (
+    SELECT person_name,
+    rank() over 
+    (
+        order by ws desc
+    ) as rn
+    from
+    (
+        SELECT person_id,person_name,weight,
+        sum(weight) over (
+            order by turn
+        ) as ws
+        from queue
+        order by turn
+    )
+    where ws <=1000
+)
+where rn = 1
+
