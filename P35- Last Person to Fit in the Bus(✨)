@@ -23,3 +23,17 @@ from (
 )
 where rn = 1
 
+
+
+Optimal Solution:-
+SELECT person_name from
+(
+        SELECT person_name,
+        sum(weight) over (
+            order by turn
+        ) as sum_weight
+        from queue
+        order by sum_weight desc
+) where sum_weight <=1000 and rownum = 1
+
+
