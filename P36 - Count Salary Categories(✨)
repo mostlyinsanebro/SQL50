@@ -1,0 +1,19 @@
+Problem Link:-
+https://leetcode.com/problems/count-salary-categories/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Brute Force Solution:-
+SELECT 'Low Salary' as category,
+count(income) as accounts_count
+from accounts
+where income< 20000
+union
+SELECT 'Average Salary' as category,
+count(income) as accounts_count
+from accounts
+where income>= 20000 and income <= 50000
+union
+SELECT 'High Salary' as category,
+count(income) as accounts_count
+from accounts
+where income > 50000
