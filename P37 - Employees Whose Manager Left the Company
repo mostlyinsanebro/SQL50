@@ -9,3 +9,13 @@ where salary < '30000'
 and manager_id is not null and 
 manager_id not in (select employee_id from employees)
 order by employee_id;
+
+
+Brute Solution:-
+SELECT e1.employee_id from employees e1,
+employees e2
+where e1.manager_id = e2.employee_id(+)
+and e1.manager_id is not null
+and e2.employee_id is null
+and e1.salary < 30000
+order by e1.employee_id
