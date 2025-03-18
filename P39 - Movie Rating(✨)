@@ -1,0 +1,27 @@
+Problem Link:-
+https://leetcode.com/problems/movie-rating/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Brute Force Solution:-
+Select name as results
+from (
+  SELECT mr.user_id,u.name,count(*) as c
+  from movierating mr,
+  users u
+  where u.user_id = mr.user_id
+  group by mr.user_id,u.name
+  order by c desc,name 
+)
+where rownum = 1 
+union all
+SELECT title as results from (
+  SELECT mr.movie_id,title,avg(rating) as r
+  from movierating mr,
+  movies m
+  where mr.movie_id = m.movie_id
+  and to_char(created_at,'YYYY-MM') = '2020-02'
+  group by mr.movie_id,title
+  order by r desc,title
+)
+where rownum =1 
+
