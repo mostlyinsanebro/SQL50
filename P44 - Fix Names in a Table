@@ -1,6 +1,7 @@
 Problem Link:-
 https://leetcode.com/problems/fix-names-in-a-table/?envType=study-plan-v2&envId=top-sql-50
 
+-- Indexing is not 0 based. It starts from 1.
 
 Solution:-
 Select user_id, concat(upper(substr(name,1,1)),lower(substr(name,2))) as name
