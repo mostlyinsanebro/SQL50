@@ -1,6 +1,16 @@
 Problem Link:-
 https://leetcode.com/problems/group-sold-products-by-the-date/description/?envType=study-plan-v2&envId=top-sql-50
 
+LISTAGG FUNCTION:-
+The LISTAGG function in Oracle is used to aggregate strings from multiple rows into a single string. From Oracle 19c onwards, the DISTINCT keyword can be used within the LISTAGG function to remove duplicates from the result.
+
+Example
+
+SELECT deptno, LISTAGG(DISTINCT ename, ', ') WITHIN GROUP (ORDER BY ename) AS employees
+FROM emp
+GROUP BY deptno
+ORDER BY deptno;
+
 
 Solution:-
 Select to_char(a.sell_date,'yyyy-mm-dd') as sell_date,count(a.product) as num_sold,
