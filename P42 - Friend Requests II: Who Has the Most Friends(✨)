@@ -1,0 +1,41 @@
+Problem Link:-
+https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+My Solution:-
+WITH cte1 as
+(SELECT requester_id,count(distinct accepter_id) as cnt
+from requestaccepted
+group by requester_id   
+),
+cte2 as
+(
+    SELECT accepter_id,count(distinct requester_id) as cnt
+    from RequestAccepted 
+    group by accepter_id
+)
+SELECT id,num from (
+SELECT nvl(requester_id,accepter_id) as id,nvl(cte1.cnt,0)+nvl(cte2.cnt,0) as num
+from cte1 full outer join
+cte2
+on cte1.requester_id = cte2.accepter_id 
+order by num desc
+)
+where rownum<=1
+
+
+Best Solution:-
+WITH cte as
+(
+SELECT id,count(*) as num from
+(
+SELECT requester_id as id from RequestAccepted 
+union all
+SELECT accepter_id  as id from RequestAccepted
+)
+group by id
+)
+SELECT id,num from cte where num = (Select max(num) from cte);
+
+
+UNION ALL -> Takes the union of two sets and also includes the duplicate data in it as well.
