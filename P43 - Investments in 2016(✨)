@@ -1,0 +1,17 @@
+Problem Link:-
+https://leetcode.com/problems/investments-in-2016/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+My Solution:-
+SELECT sum(tiv_2016) as tiv_2016 
+    from insurance i
+    where 
+    exists 
+    (Select 1 from insurance where tiv_2015 = i.tiv_2015
+    and pid != i.pid)
+    and not exists
+    (
+        Select 1 from insurance where lat = i.lat
+        and lon = i.lon
+        and pid != i.pid
+    )
