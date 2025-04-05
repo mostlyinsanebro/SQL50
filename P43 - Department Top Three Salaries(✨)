@@ -1,0 +1,21 @@
+Problem Link:-
+https://leetcode.com/problems/department-top-three-salaries/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+Solution:-
+Select department,
+employee,
+salary
+from
+  (
+    Select d.name as department,e.name as employee,e.salary as salary,
+    dense_rank() over(
+        partition by departmentid
+        order by salary desc
+    ) as rn
+    from employee e,
+    department d
+    where e.departmentid = d.id
+  )
+where rn <= 3
+
