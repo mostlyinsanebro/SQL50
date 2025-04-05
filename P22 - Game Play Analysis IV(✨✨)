@@ -1,0 +1,30 @@
+Problem Link:-
+https://leetcode.com/problems/game-play-analysis-iv/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+My Solution:-
+WITH cte as
+(
+select count(*) as c from activity a1,
+activity a2
+where a1.player_id = a2.player_id
+and to_char(a1.event_date+1,'yyyy-mm-dd') = to_char(a2.event_date,'yyyy-mm-dd')
+and a1.event_date = (Select min(event_date) from activity where player_id = a1.player_id
+                     group by player_id)
+)
+Select round(c/(Select count(distinct player_id) from activity),2) as fraction from cte
+
+
+
+Optimal Solution:- using case
+Select round(sum(
+    case when 
+    (Select min(event_date) from activity where player_id = a1.player_id)+1 = a1.event_date
+    then 1
+    else 0
+    end
+)/count(distinct player_id),2) as fraction
+from activity a1
+
+
+
